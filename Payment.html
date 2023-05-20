@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment Form</title>
+</head>
+<body>
+  <h1>Payment Form</h1>
+  <form id="paymentForm">
+    <label for="cardNumber">Card Number</label>
+    <input type="text" id="cardNumber" required>
+
+
+
+    
+
+    <label for="expirationDate">Expiration Date</label>
+    <input type="text" id="expirationDate" required>
+
+    <label for="cvv">CVV</label>
+    <input type="text" id="cvv" required>
+
+    <button type="submit">Submit Payment</button>
+  </form>
+
+</body>
+</html>
+
+<style>
+  h1{
+    background:linear-gradient(90deg,#ff0000,#ffff00,#ff00f3,#0033ff,#ff0000);
+    -webkit-text-fill-color: transparent;
+       -webkit-background-clip: text;
+       
+  }
+  label{
+    color:white;
+  }
+
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  margin: 0;
+  padding: 0;
+  margin: auto;
+		width: 50%;
+		padding: 10px;
+		border-radius: 10px;
+		height: 300px;
+		width: 250px;
+		background-color: white;
+		box-shadow: 8px 8px 20px rgb(128, 128, 128);
+    margin:160px auto;
+    max-width: 300px;
+    background-color:black;
+   
+}
+
+
+form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 1px 35px;
+}
+
+label{
+  display: block;
+  margin-bottom: 10px;
+ 
+}
+
+button {
+  margin:10px;
+  margin-left: 30px;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 4px;
+}
+button:hover {
+      background-color: #45a049;
+    }
+
+</style>
+
+<script>
+  // Add an event listener to the form submission
+document.getElementById('paymentForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Collect the payment details
+  const cardNumber = document.getElementById('cardNumber').value;
+  const expirationDate = document.getElementById('expirationDate').value;
+  const cvv = document.getElementById('cvv').value;
+
+  // Create an object with the payment details
+  const paymentData = {
+    cardNumber: cardNumber,
+    expirationDate: expirationDate,
+    cvv: cvv
+  };
+
+  // Send the payment data to the server
+  fetch('/processPayment', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(paymentData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Payment successful, display success message
+      alert('Payment successful!');
+    } else {
+      // Payment failed, display error message
+      alert('Payment failed. Please try again.');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('An error occurred. Please try again later.');
+  });
+});
+
+</script>

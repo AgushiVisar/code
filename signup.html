@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign Up </title>
+    <style>
+
+	.container {
+		padding: 60px;
+
+	}
+
+	body {
+		font-family: Arial, sans-serif;
+    background-color: white;
+
+	}
+
+	form {
+		margin: auto;
+		width: 50%;
+		padding: 10px;
+		border: 1px solid #ccc;
+		border-radius: 10px;
+		height: 520px;
+		width: 300px;
+		background-color: white;
+		box-shadow: 8px 8px 20px rgb(128, 128, 128);
+    margin:30px auto;
+     max-width: 300px;
+
+	}
+		
+      /* CSS styles for the sign-up form */
+      input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 12px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      button:hover {
+        opacity: 0.8;
+      }
+
+      .container {
+        padding: 7px;
+      }
+      .text1{
+  
+        top:20%;
+        left:2;
+       font-weight: bold;
+       font-size: 60px;
+       font-style: italic;
+       text-align: center;
+       min-height: 5vh; 
+       background:linear-gradient(90deg,#ff0000,#ffff00,#ff00f3,#0033ff,#ff0000);
+       background-size: 200%;
+       font-size: 40px;
+       -webkit-text-fill-color: transparent;
+       -webkit-background-clip: text;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div class="container">
+
+        <p class="text1">
+          Sign Up
+      </p>
+       
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+     
+        <button type="submit" id="submit">Sign Up</button>
+      </div>
+
+      <div class="container signin">
+        <p>Already have an account? <a href="signin.html">Sign in</a>.</p>
+    </form>
+
+    <script>
+      // JavaScript code to handle form submission
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault(); // prevent form submission
+
+        // get form values
+        const username = form.elements.username.value;
+        const email = form.elements.email.value;
+        const password = form.elements.psw.value;
+        const confirmPassword = form.elements['psw-repeat'].value;
+
+    
+        // create user account using form data
+        const user = {
+          username,
+          email,
+          password,
+        };
+
+        console.log(user); // log user data to console
+        // perform sign-up API call or redirect to sign-up page
+      });
+    </script>
+  </body>
+</html>
+
